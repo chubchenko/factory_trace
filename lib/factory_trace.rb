@@ -49,7 +49,7 @@ module FactoryTrace
       return unless configuration.enabled
 
       # This is required to exclude parent traits from +defined_traits+
-      FactoryBot.reload
+      # FactoryBot.reload
 
       if configuration.mode?(:full)
         Writers::ReportWriter.new(configuration.out, configuration).write(Processors::FindUnused.call(defined, used))
