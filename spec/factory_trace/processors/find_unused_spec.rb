@@ -10,7 +10,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 0},
-          {code: :unused, value: 12},
+          {code: :unused, value: 17},
           {code: :unused, factory_names: ["user"]},
           {code: :unused, factory_names: ["user"], trait_name: "with_phone"},
           {code: :unused, factory_names: ["user_with_defaults"]},
@@ -22,6 +22,11 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -33,7 +38,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 1},
-          {code: :unused, value: 11},
+          {code: :unused, value: 16},
           {code: :unused, factory_names: ["user"]},
           {code: :unused, factory_names: ["user"], trait_name: "with_phone"},
           {code: :unused, factory_names: ["user_with_defaults"]},
@@ -44,6 +49,11 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"]},
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -55,7 +65,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 1},
-          {code: :unused, value: 11},
+          {code: :unused, value: 16},
           {code: :unused, factory_names: ["user"], trait_name: "with_phone"},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"]},
@@ -66,6 +76,11 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -77,7 +92,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 2},
-          {code: :unused, value: 10},
+          {code: :unused, value: 15},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"]},
           {code: :unused, factory_names: ["admin"], trait_name: "with_email"},
@@ -87,6 +102,11 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -98,7 +118,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 2},
-          {code: :unused, value: 10},
+          {code: :unused, value: 15},
           {code: :unused, factory_names: ["user"], trait_name: "with_phone"},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"], trait_name: "with_email"},
@@ -108,6 +128,12 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -119,7 +145,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 2},
-          {code: :unused, value: 10},
+          {code: :unused, value: 15},
           {code: :unused, factory_names: ["user"], trait_name: "with_phone"},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"]},
@@ -129,7 +155,12 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"]},
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
-          {code: :unused, factory_names: ["comment"]}
+          {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"}
         ])
       end
     end
@@ -140,7 +171,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 3},
-          {code: :unused, value: 9},
+          {code: :unused, value: 14},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"], trait_name: "with_email"},
           {code: :unused, factory_names: ["admin"], trait_name: "combination"},
@@ -149,6 +180,11 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -160,7 +196,12 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 12},
-          {code: :unused, value: 0}
+          {code: :unused, value: 5},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"}
         ])
       end
     end
@@ -171,13 +212,19 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 5},
-          {code: :unused, value: 7},
+          {code: :unused, value: 12},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["manager"]},
           {code: :unused, factory_names: ["company"]},
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -189,7 +236,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 4},
-          {code: :unused, value: 8},
+          {code: :unused, value: 13},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"], trait_name: "with_email"},
           {code: :unused, factory_names: ["admin"], trait_name: "combination"},
@@ -197,6 +244,12 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -208,7 +261,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 2},
-          {code: :unused, value: 10},
+          {code: :unused, value: 15},
           {code: :unused, factory_names: ["user"]},
           {code: :unused, factory_names: ["user"], trait_name: "with_phone"},
           {code: :unused, factory_names: ["user_with_defaults"]},
@@ -218,6 +271,12 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["manager"]},
           {code: :unused, factory_names: ["company"]},
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
+
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -229,12 +288,18 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 6},
-          {code: :unused, value: 6},
+          {code: :unused, value: 11},
           {code: :unused, factory_names: ["user_with_defaults"]},
           {code: :unused, factory_names: ["admin"], trait_name: "with_email"},
           {code: :unused, factory_names: ["admin"], trait_name: "combination"},
           {code: :unused, factory_names: ["article", "post"]},
           {code: :unused, factory_names: ["comment"]},
+
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"},
           {code: :unused, trait_name: "with_address"}
         ])
       end
@@ -246,7 +311,7 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
       specify do
         expect(checker).to eq([
           {code: :used, value: 4},
-          {code: :unused, value: 8},
+          {code: :unused, value: 13},
           {code: :unused, factory_names: ["admin"]},
           {code: :unused, factory_names: ["admin"], trait_name: "with_email"},
           {code: :unused, factory_names: ["admin"], trait_name: "combination"},
@@ -254,7 +319,12 @@ RSpec.describe FactoryTrace::Processors::FindUnused do
           {code: :unused, factory_names: ["company"]},
           {code: :unused, factory_names: ["company"], trait_name: "with_manager"},
           {code: :unused, factory_names: ["article", "post"]},
-          {code: :unused, factory_names: ["comment"]}
+          {code: :unused, factory_names: ["comment"]},
+          {code: :unused, factory_names: ["a"]},
+          {code: :unused, factory_names: ["a"], trait_name: "a1"},
+          {code: :unused, factory_names: ["a"], trait_name: "a2"},
+          {code: :unused, factory_names: ["b"]},
+          {code: :unused, factory_names: ["b"], trait_name: "b1"}
         ])
       end
     end

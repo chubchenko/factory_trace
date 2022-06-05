@@ -56,4 +56,28 @@ FactoryBot.define do
   trait :with_address do
     address { "address" }
   end
+
+  factory :a do
+    trait :a1 do
+      a1 { "a1" }
+    end
+
+    trait :a2 do
+      a2 { "a2" }
+    end
+  end
+
+  factory :b, parent: :a, class: "B" do
+    trait :b1 do
+      a1 { "b1" }
+    end
+  end
+end
+
+class A
+  attr_accessor :a1, :a2
+end
+
+class B < A
+  attr_accessor :b1
 end

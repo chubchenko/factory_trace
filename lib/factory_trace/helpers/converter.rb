@@ -20,6 +20,9 @@ module FactoryTrace
       #
       # @return [FactoryTrace::Structures::Factory]
       def factory(factory)
+        # Manually run compilation to define all traits.
+        # factory.compile if [:a, :b].include?(factory.name)
+
         FactoryTrace::Structures::Factory.new(
           factory.names.map(&:to_s),
           factory.defined_traits.map(&method(:trait)),
